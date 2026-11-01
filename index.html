@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Nguyen Duc Cuong, Unity game developer: puzzle games, level generators and solvers.">
+<title>Nguyễn Đức Cường Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one narrow reading column; each puzzle is a "level card" with a phone-framed clip beside its notes. Grid paper behind the header echoes the puzzle boards. */
+:root{
+  --bg:#f5f7fb; --surface:#ffffff; --ink:#18212e; --muted:#5a6678; --line:#dbe2ec;
+  --navy:#3d5d82; --accent:#2f7de1; --tile:#e8f1fb; --grid:rgba(61,93,130,.09);
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f141b; --surface:#171e28; --ink:#e7edf5; --muted:#9aa8bb; --line:#283344;
+  --navy:#8fb3dc; --accent:#6aa7f0; --tile:#1d2938; --grid:rgba(143,179,220,.08); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f141b; --surface:#171e28; --ink:#e7edf5; --muted:#9aa8bb; --line:#283344;
+  --navy:#8fb3dc; --accent:#6aa7f0; --tile:#1d2938; --grid:rgba(143,179,220,.08); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* header */
+header{border-bottom:1px solid var(--line);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px}
+header .wrap{padding-block:56px 44px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
+header h1{font-size:clamp(30px,5vw,44px);font-weight:800;color:var(--navy)}
+.role{font-family:var(--f-display);font-weight:600;font-size:19px;margin-top:4px}
+.intro{color:var(--muted);max-width:60ch;margin:12px 0 18px}
+.contact{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--f-body);padding:9px 16px;border-radius:8px;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:var(--surface)}
+.btn:hover{border-color:var(--accent)}
+.mail{font-family:var(--f-mono);font-size:14px;user-select:all}
+.copied{font-size:13px;color:var(--muted)}
+
+/* sections */
+section{padding-block:56px 8px}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.sec-head h2{font-size:28px;font-weight:800}
+.sec-head p{margin:0;color:var(--muted)}
+
+/* level cards */
+.level{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:32px;margin-bottom:28px}
+.phone{align-self:start;background:#11161d;border-radius:26px;padding:8px;box-shadow:0 10px 30px rgba(20,35,60,.18);max-width:260px;width:100%}
+.phone video,.phone img{display:block;width:100%;border-radius:19px;aspect-ratio:9/16;object-fit:cover;background:#11161d}
+.info{min-width:0}
+.tag{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.level h3{font-size:26px;font-weight:800;margin:4px 0 12px}
+.play{background:var(--tile);border-radius:10px;padding:12px 14px;margin:0 0 16px}
+.play b{font-family:var(--f-display)}
+.level ul{margin:0 0 16px;padding-left:20px}
+.level li{margin:6px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.chip{font-family:var(--f-mono);font-size:12px;padding:3px 9px;border-radius:5px;background:var(--tile);color:var(--navy)}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.shots.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:66%}
+.shots img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.level.compact{grid-template-columns:1fr}
+
+/* shipped games */
+.shipped{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.game{display:flex;flex-direction:column;gap:2px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
+.game:hover{border-color:var(--accent)}
+.game b{font-family:var(--f-display);font-size:17px}
+.game span{font-size:13px;color:var(--muted)}
+.game em{font-style:normal;font-size:13px;color:var(--accent);margin-top:8px}
+.stat{display:flex;gap:14px;align-items:baseline;margin-bottom:20px;flex-wrap:wrap}
+.stat strong{font-family:var(--f-display);font-size:40px;font-weight:800;color:var(--navy);line-height:1}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 32px;margin:0;padding:0;list-style:none}
+.skills li{padding:12px 0;border-bottom:1px solid var(--line)}
+.skills b{display:block;font-family:var(--f-display);font-size:15px}
+.skills span{color:var(--muted);font-size:15px}
+
+.hl{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:16px}
+.hl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.hl h3{font-size:24px;font-weight:800;margin-top:4px}
+.hl-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.hl-nums div{background:var(--tile);border-radius:10px;padding:14px}
+.hl-nums strong{display:block;font-family:var(--f-display);font-size:28px;font-weight:800;color:var(--navy);line-height:1.1}
+.hl-nums span{font-size:14px;color:var(--muted)}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.bars li{display:grid;grid-template-columns:110px minmax(0,1fr) 64px;gap:12px;align-items:center;font-size:14px}
+.bars .bar{height:10px;background:var(--tile);border-radius:5px;overflow:hidden}
+.bars i{display:block;height:100%;background:var(--accent);border-radius:5px}
+.bars .n{text-align:right;font-variant-numeric:tabular-nums}
+.src{font-size:12px;color:var(--muted);margin:14px 0 0}
+.hl-body{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:28px;align-items:center}
+.shot{margin:0}
+.shot img{display:block;width:100%;border-radius:10px;border:1px solid var(--line)}
+.shot figcaption{font-size:12px;color:var(--muted);margin-top:8px}
+.hl-bars .eyebrow{margin-bottom:12px}
+@media (max-width:720px){.hl-body{grid-template-columns:1fr}}
+footer{margin-top:56px;border-top:1px solid var(--line)}
+footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+
+@media (max-width:720px){
+  header .wrap{grid-template-columns:1fr;padding-block:36px 32px}
+  .avatar{width:96px;height:96px}
+  .level{grid-template-columns:1fr;padding:18px;gap:20px}
+  .phone{margin:0 auto;max-width:230px}
+  .shots.two{max-width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img class="avatar" src="media/photo.jpg" alt="Nguyễn Đức Cường">
+    <div>
+      <h1>Nguyễn Đức Cường</h1>
+      <div class="role">Unity Game Developer · Hà Nội</div>
+      <p class="intro">Unity developer with about 2 years of shipping WebGL games at GM Soft. I build puzzle games with level generators that only produce solvable boards, solvers that score difficulty, and Unity Editor tools for designing levels.</p>
+      <div class="contact">
+        <a class="btn primary" href="CV_Nguyen_Duc_Cuong.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
+        <a class="btn" href="https://github.com/DucCuong2412" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn" id="copy-mail" type="button">Copy email</button>
+        <span class="mail" id="mail">cuongndph51825@gmail.com</span>
+        <span class="copied" id="copied" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="puzzles">
+    <div class="sec-head">
+      <h2>Puzzle Projects</h2>
+      <p>Personal projects · Unity &amp; C#</p>
+    </div>
+
+    <article class="level">
+      <div class="phone"><video src="media/pixel.mp4" poster="media/pixel_poster.jpg" autoplay muted loop playsinline aria-label="Pixel Unpuzzle gameplay"></video></div>
+      <div class="info">
+        <div class="tag">Mobile puzzle · 100-level curve</div>
+        <h3>Pixel Unpuzzle</h3>
+        <p class="play"><b>Gameplay:</b> tap jigsaw pieces to send them to the matching color tray. Spare pieces wait in a 5-slot holding row, and the level fails when it fills with no valid move.</p>
+        <ul>
+          <li>Game rules live in a pure C# model that emits events; Unity views only animate them.</li>
+          <li>DFS solver plus a generator that outputs only solvable levels.</li>
+          <li>Difficulty score from 0 to 100, used to order and plan a 100-level curve.</li>
+          <li>Custom Unity Editor level editor: paint pieces, undo/redo, one-click solve and instant play-test.</li>
+        </ul>
+        <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">NUnit</span><span class="chip">Editor tooling</span><span class="chip">DFS solver</span></div>
+        <div class="shots">
+          <img src="media/pixel_title.jpg" alt="Pixel Unpuzzle title screen" loading="lazy">
+          <img src="media/pixel_play.jpg" alt="Pixel Unpuzzle level in progress" loading="lazy">
+          <img src="media/pixel_complete.jpg" alt="Pixel Unpuzzle level complete screen" loading="lazy">
+        </div>
+        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1L_aNSU4mxbz-J3aqfkBcstfurdtWiriD/view?usp=drive_link" target="_blank" rel="noopener">Full gameplay video</a></div>
+      </div>
+    </article>
+
+    <article class="level">
+      <div class="phone"><video src="media/drawbox.mp4" poster="media/drawbox_poster.jpg" autoplay muted loop playsinline aria-label="DrawBox Puzzle gameplay"></video></div>
+      <div class="info">
+        <div class="tag">Mobile logic puzzle · Shikaku rules</div>
+        <h3>DrawBox Puzzle</h3>
+        <p class="play"><b>Gameplay:</b> drag to draw rectangles. Each box holds exactly one number and covers that many cells. Solve the grid before the timer runs out to reveal a pixel picture.</p>
+        <ul>
+          <li>Tool that turns any pixel image into a puzzle with exactly one solution.</li>
+          <li>Backtracking solver checks every generated puzzle for a unique answer.</li>
+        </ul>
+        <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">Backtracking</span><span class="chip">Procedural levels</span></div>
+        <div class="shots two">
+          <img src="media/drawbox_play.jpg" alt="DrawBox Puzzle grid in progress" loading="lazy">
+          <img src="media/drawbox_clear.jpg" alt="DrawBox Puzzle stage clear with finished picture" loading="lazy">
+        </div>
+        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1Hw5-frg4JS8vST46402Nu8_CwSwOciY9/view?usp=sharing" target="_blank" rel="noopener">Full gameplay video</a></div>
+      </div>
+    </article>
+
+    <article class="level compact">
+      <div class="info">
+        <div class="tag">Mobile puzzle · hearts system</div>
+        <h3>Arrow Puzzle</h3>
+        <p class="play"><b>Gameplay:</b> tap an arrow to slide it off the board in its direction. A blocked tap costs a heart, and the level is lost at zero hearts.</p>
+        <ul>
+          <li>Generator that makes every level solvable by construction.</li>
+          <li>Solver that rates difficulty by "waves" of arrows that are free to move, and powers the hint system.</li>
+          <li>Ads and saving sit behind swappable interfaces; added haptics, procedural SFX and safe-area UI.</li>
+        </ul>
+        <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">Event-driven</span><span class="chip">Hint system</span></div>
+        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1rr4bOqVPC7dKVKLOCrEsP5smUtNbHYe5/view?usp=sharing" target="_blank" rel="noopener">Watch gameplay video</a></div>
+      </div>
+    </article>
+  </section>
+
+  <section id="gmsoft">
+    <div class="sec-head">
+      <h2>Shipped at GM Soft</h2>
+      <p>Unity Developer · 12/2024 – Present</p>
+    </div>
+    <div class="stat"><strong>25+</strong><span>WebGL games released on the azgames.io portal, several on its Trending list. Gameplay, controls, UI, SDK and leaderboard integration, testing on browsers and Chromebooks.</span></div>
+    <div class="hl">
+      <div class="hl-head">
+        <div><div class="tag">Highlight · action</div><h3>Undead Corridor</h3></div>
+        <a class="btn" href="https://azgames.io/undead-corridor" target="_blank" rel="noopener">Play on azgames.io</a>
+      </div>
+      <div class="hl-nums">
+        <div><strong>18,500+</strong><span>players in the top 5 countries</span></div>
+        <div><strong>73%</strong><span>of those players from the US</span></div>
+        <div><strong>160+</strong><span>websites sending players</span></div>
+      </div>
+      <div class="hl-body">
+        <figure class="shot"><img src="media/undead_users.png" alt="Analytics screenshot: Undead Corridor active users by country" loading="lazy"><figcaption>Screenshot from the studio's analytics dashboard.</figcaption></figure>
+        <div class="hl-bars">
+          <div class="eyebrow">Players by country</div>
+          <ul class="bars"><li><span class="c">United States</span><span class="bar"><i style="width:100.0%"></i></span><span class="n">13,565</span></li><li><span class="c">Canada</span><span class="bar"><i style="width:17.7%"></i></span><span class="n">2,399</span></li><li><span class="c">Brazil</span><span class="bar"><i style="width:9.0%"></i></span><span class="n">1,218</span></li><li><span class="c">Spain</span><span class="bar"><i style="width:6.3%"></i></span><span class="n">849</span></li><li><span class="c">Netherlands</span><span class="bar"><i style="width:3.7%"></i></span><span class="n">508</span></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="shipped">
+      <a class="game" href="https://azgames.io/sky-dart" target="_blank" rel="noopener"><b>Sky Dart</b><span>3D arcade</span><em>Play on azgames.io</em></a>
+      <a class="game" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener"><b>Hyper Tunnel</b><span>Arcade</span><em>Play on azgames.io</em></a>
+      <a class="game" href="https://azgames.io/planet-buster" target="_blank" rel="noopener"><b>Planet Buster</b><span>Arcade action</span><em>Play on azgames.io</em></a>
+      <a class="game" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener"><b>Blocky Xtreme</b><span>Driving</span><em>Play on azgames.io</em></a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><h2>Skills</h2></div>
+    <ul class="skills">
+      <li><b>Unity &amp; C#</b><span>2D/3D, Animator, UI, VFX</span></li>
+      <li><b>Gameplay</b><span>Vehicle and ragdoll physics, AI with state machines</span></li>
+      <li><b>Architecture</b><span>Event-driven design; Singleton, State Machine, Observer</span></li>
+      <li><b>Tools</b><span>Unity Editor tools, level generators and solvers</span></li>
+      <li><b>Platforms</b><span>WebGL, Android, PC</span></li>
+      <li><b>Workflow</b><span>Git (GitHub, GitLab), Trello, ClickUp, Figma, QA checklists</span></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Nguyễn Đức Cường · Unity Game Developer</span>
+    <span>FPT Polytechnic College · Game Programming · 2023 – 2025</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy-mail'),mail=document.getElementById('mail'),out=document.getElementById('copied');
+  btn.addEventListener('click',function(){
+    var t=mail.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);out.textContent='Selected, press Ctrl+C';}
+    try{navigator.clipboard.writeText(t).then(function(){out.textContent='Copied';},sel);}catch(e){sel();}
+  });
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video').forEach(function(v){v.removeAttribute('autoplay');v.pause();v.controls=true;});
+  }
+})();
+</script>
+</body>
+</html>
