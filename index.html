@@ -116,6 +116,19 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
   .phone{margin:0 auto;max-width:230px}
   .shots.two{max-width:100%}
 }
+/* in-page game player: a portrait iframe in a modal dialog, full screen on phones */
+#player{padding:0;border:0;border-radius:16px;background:#11161d;color:#e7edf5;overflow:hidden;max-width:none;max-height:none}
+#player::backdrop{background:rgba(8,12,18,.8)}
+.player-bar{display:flex;align-items:center;gap:14px;padding:8px 8px 8px 16px;font-size:14px}
+.player-bar b{font-family:var(--f-display);margin-right:auto}
+.player-bar a{color:#9fc3f0}
+.player-bar .btn{padding:4px 12px;background:transparent;color:inherit;border-color:#2c3646}
+#player iframe{display:block;border:0;background:#000;height:min(84vh,820px);width:calc(min(84vh,820px)*9/16);max-width:94vw}
+@media (max-width:600px){
+  #player{width:100%;height:100%;border-radius:0}
+  #player[open]{display:flex;flex-direction:column}
+  #player iframe{flex:1;width:100%;height:auto;max-width:none}
+}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style>
 </head>
@@ -162,7 +175,7 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
           <img src="media/arrow_levels.jpg" alt="Arrow Puzzle level select" loading="lazy">
           <img src="media/arrow_complete.jpg" alt="Arrow Puzzle level complete screen" loading="lazy">
         </div>
-        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1rr4bOqVPC7dKVKLOCrEsP5smUtNbHYe5/view?usp=sharing" target="_blank" rel="noopener">Watch gameplay video</a></div>
+        <div class="links"><button class="btn primary" type="button" data-play="games/arrow-puzzle/index.html" data-title="Arrow Puzzle">&#9654; Play in browser</button><a class="btn" href="https://drive.google.com/file/d/1rr4bOqVPC7dKVKLOCrEsP5smUtNbHYe5/view?usp=sharing" target="_blank" rel="noopener">Watch gameplay video</a></div>
       </div>
     </article>
 
@@ -184,7 +197,7 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
           <img src="media/pixel_play.jpg" alt="Pixel Unpuzzle level in progress" loading="lazy">
           <img src="media/pixel_complete.jpg" alt="Pixel Unpuzzle level complete screen" loading="lazy">
         </div>
-        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1L_aNSU4mxbz-J3aqfkBcstfurdtWiriD/view?usp=drive_link" target="_blank" rel="noopener">Full gameplay video</a></div>
+        <div class="links"><button class="btn primary" type="button" data-play="games/pixel-unpuzzle/index.html" data-title="Pixel Unpuzzle">&#9654; Play in browser</button><a class="btn" href="https://drive.google.com/file/d/1L_aNSU4mxbz-J3aqfkBcstfurdtWiriD/view?usp=drive_link" target="_blank" rel="noopener">Full gameplay video</a></div>
       </div>
     </article>
 
@@ -203,7 +216,7 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
           <img src="media/drawbox_play.jpg" alt="DrawBox Puzzle grid in progress" loading="lazy">
           <img src="media/drawbox_clear.jpg" alt="DrawBox Puzzle stage clear with finished picture" loading="lazy">
         </div>
-        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1Hw5-frg4JS8vST46402Nu8_CwSwOciY9/view?usp=sharing" target="_blank" rel="noopener">Full gameplay video</a></div>
+        <div class="links"><button class="btn primary" type="button" data-play="games/drawbox/index.html" data-title="DrawBox Puzzle">&#9654; Play in browser</button><a class="btn" href="https://drive.google.com/file/d/1Hw5-frg4JS8vST46402Nu8_CwSwOciY9/view?usp=sharing" target="_blank" rel="noopener">Full gameplay video</a></div>
       </div>
     </article>
   </section>
@@ -260,6 +273,11 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
   </div>
 </footer>
 
+<dialog id="player" aria-labelledby="player-title">
+  <div class="player-bar"><b id="player-title"></b><a id="player-tab" href="#" target="_blank" rel="noopener">Open in new tab</a><button class="btn" id="player-close" type="button" aria-label="Close game">&#10005;</button></div>
+  <iframe id="player-frame" title="Game" allow="fullscreen; autoplay" allowfullscreen></iframe>
+</dialog>
+
 <script>
 (function(){
   var btn=document.getElementById('copy-mail'),mail=document.getElementById('mail'),out=document.getElementById('copied');
@@ -268,9 +286,26 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
     function sel(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);out.textContent='Selected, press Ctrl+C';}
     try{navigator.clipboard.writeText(t).then(function(){out.textContent='Copied';},sel);}catch(e){sel();}
   });
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){
     document.querySelectorAll('video').forEach(function(v){v.removeAttribute('autoplay');v.pause();v.controls=true;});
   }
+
+  // Game player: load the build only when asked, and unload it on close to free the WebGL context.
+  var dlg=document.getElementById('player'),frame=document.getElementById('player-frame'),tab=document.getElementById('player-tab');
+  function videos(play){if(!reduce)document.querySelectorAll('video').forEach(function(v){play?v.play().catch(function(){}):v.pause();});}
+  document.querySelectorAll('[data-play]').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.getElementById('player-title').textContent=b.dataset.title;
+      tab.href=b.dataset.play;frame.src=b.dataset.play;
+      document.documentElement.style.overflow='hidden';videos(false);
+      dlg.showModal();frame.focus();
+    });
+  });
+  document.getElementById('player-close').addEventListener('click',function(){dlg.close();});
+  tab.addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+  dlg.addEventListener('close',function(){frame.src='about:blank';document.documentElement.style.overflow='';videos(true);});
 })();
 </script>
 </body>
