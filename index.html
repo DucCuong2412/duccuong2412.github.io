@@ -70,7 +70,6 @@ section{padding-block:56px 8px}
 .shots.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:66%}
 .shots img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
 .links{display:flex;flex-wrap:wrap;gap:10px}
-.level.compact{grid-template-columns:1fr}
 
 /* shipped games */
 .shipped{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
@@ -147,6 +146,27 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
     </div>
 
     <article class="level">
+      <div class="phone"><video src="media/arrow.mp4" poster="media/arrow_poster.jpg" autoplay muted loop playsinline aria-label="Arrow Puzzle gameplay"></video></div>
+      <div class="info">
+        <div class="tag">Mobile puzzle · hearts system</div>
+        <h3>Arrow Puzzle</h3>
+        <p class="play"><b>Gameplay:</b> tap an arrow to slide it off the board in its direction. A blocked tap costs a heart, and the level is lost at zero hearts.</p>
+        <ul>
+          <li>Generator that makes every level solvable by construction.</li>
+          <li>Solver that rates difficulty by "waves" of arrows that are free to move, and powers the hint system.</li>
+          <li>Ads and saving sit behind swappable interfaces; added haptics, procedural SFX and safe-area UI.</li>
+        </ul>
+        <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">Event-driven</span><span class="chip">Hint system</span></div>
+        <div class="shots">
+          <img src="media/arrow_title.jpg" alt="Arrow Puzzle title screen" loading="lazy">
+          <img src="media/arrow_levels.jpg" alt="Arrow Puzzle level select" loading="lazy">
+          <img src="media/arrow_complete.jpg" alt="Arrow Puzzle level complete screen" loading="lazy">
+        </div>
+        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1rr4bOqVPC7dKVKLOCrEsP5smUtNbHYe5/view?usp=sharing" target="_blank" rel="noopener">Watch gameplay video</a></div>
+      </div>
+    </article>
+
+    <article class="level">
       <div class="phone"><video src="media/pixel.mp4" poster="media/pixel_poster.jpg" autoplay muted loop playsinline aria-label="Pixel Unpuzzle gameplay"></video></div>
       <div class="info">
         <div class="tag">Mobile puzzle · 100-level curve</div>
@@ -184,21 +204,6 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
           <img src="media/drawbox_clear.jpg" alt="DrawBox Puzzle stage clear with finished picture" loading="lazy">
         </div>
         <div class="links"><a class="btn" href="https://drive.google.com/file/d/1Hw5-frg4JS8vST46402Nu8_CwSwOciY9/view?usp=sharing" target="_blank" rel="noopener">Full gameplay video</a></div>
-      </div>
-    </article>
-
-    <article class="level compact">
-      <div class="info">
-        <div class="tag">Mobile puzzle · hearts system</div>
-        <h3>Arrow Puzzle</h3>
-        <p class="play"><b>Gameplay:</b> tap an arrow to slide it off the board in its direction. A blocked tap costs a heart, and the level is lost at zero hearts.</p>
-        <ul>
-          <li>Generator that makes every level solvable by construction.</li>
-          <li>Solver that rates difficulty by "waves" of arrows that are free to move, and powers the hint system.</li>
-          <li>Ads and saving sit behind swappable interfaces; added haptics, procedural SFX and safe-area UI.</li>
-        </ul>
-        <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">Event-driven</span><span class="chip">Hint system</span></div>
-        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1rr4bOqVPC7dKVKLOCrEsP5smUtNbHYe5/view?usp=sharing" target="_blank" rel="noopener">Watch gameplay video</a></div>
       </div>
     </article>
   </section>
