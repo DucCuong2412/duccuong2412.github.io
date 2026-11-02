@@ -73,11 +73,12 @@ section{padding-block:56px 8px}
 
 /* shipped games */
 .shipped{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.game{display:flex;flex-direction:column;gap:2px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
-.game:hover{border-color:var(--accent)}
+.game{display:flex;flex-direction:column;gap:2px;padding:16px;transition:border-color .15s,transform .15s;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
+.game:hover{border-color:var(--accent);transform:translateY(-2px)}
 .game b{font-family:var(--f-display);font-size:17px}
-.game span{font-size:13px;color:var(--muted)}
-.game em{font-style:normal;font-size:13px;color:var(--accent);margin-top:8px}
+.game span{font-size:13px;color:var(--muted);margin-bottom:14px}
+.game em{font:600 13px var(--f-body);font-style:normal;align-self:flex-start;margin-top:auto;padding:6px 12px;border-radius:7px;background:var(--navy);color:var(--surface)}
+.game:hover em{background:var(--accent)}
 .stat{display:flex;gap:14px;align-items:baseline;margin-bottom:20px;flex-wrap:wrap}
 .stat strong{font-family:var(--f-display);font-size:40px;font-weight:800;color:var(--navy);line-height:1}
 
@@ -230,7 +231,7 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
     <div class="hl">
       <div class="hl-head">
         <div><div class="tag">Highlight · action</div><h3>Undead Corridor</h3></div>
-        <a class="btn" href="https://azgames.io/undead-corridor" target="_blank" rel="noopener">Play on azgames.io</a>
+        <a class="btn primary" href="https://azgames.io/undead-corridor" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a>
       </div>
       <div class="hl-nums">
         <div><strong>18,500+</strong><span>players in the top 5 countries</span></div>
@@ -246,10 +247,10 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
       </div>
     </div>
     <div class="shipped">
-      <a class="game" href="https://azgames.io/sky-dart" target="_blank" rel="noopener"><b>Sky Dart</b><span>3D arcade</span><em>Play on azgames.io</em></a>
-      <a class="game" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener"><b>Hyper Tunnel</b><span>Arcade</span><em>Play on azgames.io</em></a>
-      <a class="game" href="https://azgames.io/planet-buster" target="_blank" rel="noopener"><b>Planet Buster</b><span>Arcade action</span><em>Play on azgames.io</em></a>
-      <a class="game" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener"><b>Blocky Xtreme</b><span>Driving</span><em>Play on azgames.io</em></a>
+      <a class="game" href="https://azgames.io/sky-dart" target="_blank" rel="noopener"><b>Sky Dart</b><span>3D arcade</span><em>&#9654; Play on azgames.io &#8599;</em></a>
+      <a class="game" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener"><b>Hyper Tunnel</b><span>Arcade</span><em>&#9654; Play on azgames.io &#8599;</em></a>
+      <a class="game" href="https://azgames.io/planet-buster" target="_blank" rel="noopener"><b>Planet Buster</b><span>Arcade action</span><em>&#9654; Play on azgames.io &#8599;</em></a>
+      <a class="game" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener"><b>Blocky Xtreme</b><span>Driving</span><em>&#9654; Play on azgames.io &#8599;</em></a>
     </div>
   </section>
 
