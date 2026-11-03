@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Portfolio of Nguyen Duc Cuong, Unity game developer: puzzle games, level generators and solvers.">
+<meta name="description" content="Portfolio of Nguyen Duc Cuong, Unity game developer: 15+ shipped WebGL games, puzzle games, level generators and solvers.">
 <title>Nguyễn Đức Cường Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,11 +72,14 @@ section{padding-block:56px 8px}
 .links{display:flex;flex-wrap:wrap;gap:10px}
 
 /* shipped games */
-.shipped{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.shipped{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
 .game{display:flex;flex-direction:column;gap:2px;padding:16px;transition:border-color .15s,transform .15s;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
 .game:hover{border-color:var(--accent);transform:translateY(-2px)}
-.game b{font-family:var(--f-display);font-size:17px}
-.game span{font-size:13px;color:var(--muted);margin-bottom:14px}
+.game b{font-family:var(--f-display);font-size:17px;margin-bottom:14px}
+.group{font-size:15px;font-weight:700;color:var(--muted);margin:24px 0 10px}
+.work{margin:0 0 28px;padding-left:20px;max-width:72ch}
+.work li,.hl li{margin:6px 0}
+.hl ul{margin:0 0 20px;padding-left:20px}
 .game em{font:600 13px var(--f-body);font-style:normal;align-self:flex-start;margin-top:auto;padding:6px 12px;border-radius:7px;background:var(--navy);color:var(--surface)}
 .game:hover em{background:var(--accent)}
 .stat{display:flex;gap:14px;align-items:baseline;margin-bottom:20px;flex-wrap:wrap}
@@ -141,7 +144,7 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
     <div>
       <h1>Nguyễn Đức Cường</h1>
       <div class="role">Unity Game Developer · Hà Nội</div>
-      <p class="intro">Unity developer with about 2 years of shipping WebGL games at GM Soft. I build puzzle games with level generators that only produce solvable boards, solvers that score difficulty, and Unity Editor tools for designing levels.</p>
+      <p class="intro">Unity developer with nearly 2 years of shipping WebGL games at GM Soft, focused on game feel and smooth performance in the browser. On the side I build puzzle games with level generators that only produce solvable boards, solvers that score difficulty, and Unity Editor tools for designing levels.</p>
       <div class="contact">
         <a class="btn primary" href="CV_Nguyen_Duc_Cuong.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
         <button class="btn" id="copy-mail" type="button">Copy email</button>
@@ -153,6 +156,64 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
 </header>
 
 <main class="wrap">
+  <section id="gmsoft">
+    <div class="sec-head">
+      <h2>Work at GM Soft</h2>
+      <p>Unity Developer · 12/2024 – Present</p>
+    </div>
+    <div class="stat"><strong>15+</strong><span>WebGL games shipped on azgames.io, several reaching the portal's Trending list. GM Soft is a studio making HTML5/WebGL games for the US market.</span></div>
+    <ul class="work">
+      <li>Programmed gameplay and UI with a focus on game feel and player experience, using DOTween for animation and feedback.</li>
+      <li>Cut build size by about 20&nbsp;MB per game, so games load faster on low-end devices and Chromebooks.</li>
+      <li>Used the Unity Profiler to track down stutter and lag, and optimized games to run smoothly in the browser.</li>
+      <li>Integrated portal SDKs and Unity Leaderboards.</li>
+      <li>Worked with designers, artists and QA to polish each game; tested builds across browsers and Chromebooks with QA checklists before release.</li>
+    </ul>
+    <div class="hl">
+      <div class="hl-head">
+        <div><div class="tag">Highlight · 2D zombie shooter</div><h3>Undead Corridor</h3></div>
+        <a class="btn primary" href="https://azgames.io/undead-corridor" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a>
+      </div>
+      <p class="play"><b>Gameplay:</b> hold tight corridors against zombie waves. Aim, reload, kick them back and buy stronger guns.</p>
+      <ul>
+        <li>Zombie AI with different speed, toughness and aggression; ragdoll physics for hits and deaths.</li>
+        <li>Weapon switching, ammo and reload system, plus an in-game shop for weapon upgrades.</li>
+      </ul>
+      <div class="hl-nums">
+        <div><strong>18,500+</strong><span>players in the top 5 countries</span></div>
+        <div><strong>73%</strong><span>of those players from the US</span></div>
+        <div><strong>160+</strong><span>websites sending players</span></div>
+      </div>
+      <div class="hl-body">
+        <figure class="shot"><img src="media/undead_users.png" alt="Analytics screenshot: Undead Corridor active users by country" loading="lazy"><figcaption>Screenshot from the studio's analytics dashboard.</figcaption></figure>
+        <div class="hl-bars">
+          <div class="eyebrow">Players by country</div>
+          <ul class="bars"><li><span class="c">United States</span><span class="bar"><i style="width:100.0%"></i></span><span class="n">13,565</span></li><li><span class="c">Canada</span><span class="bar"><i style="width:17.7%"></i></span><span class="n">2,399</span></li><li><span class="c">Brazil</span><span class="bar"><i style="width:9.0%"></i></span><span class="n">1,218</span></li><li><span class="c">Spain</span><span class="bar"><i style="width:6.3%"></i></span><span class="n">849</span></li><li><span class="c">Netherlands</span><span class="bar"><i style="width:3.7%"></i></span><span class="n">508</span></li></ul>
+        </div>
+      </div>
+    </div>
+    <h3 class="group">Racing &amp; driving</h3>
+    <div class="shipped">
+      <a class="game" href="https://azgames.io/street-escape" target="_blank" rel="noopener"><b>Street Escape</b><em>&#9654; Play &#8599;</em></a>
+      <a class="game" href="https://azgames.io/turbo-flip" target="_blank" rel="noopener"><b>Turbo Flip</b><em>&#9654; Play &#8599;</em></a>
+      <a class="game" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener"><b>Blocky Xtreme</b><em>&#9654; Play &#8599;</em></a>
+    </div>
+    <h3 class="group">Arcade &amp; casual</h3>
+    <div class="shipped">
+      <a class="game" href="https://azgames.io/stumble-race" target="_blank" rel="noopener"><b>Stumble Race</b><em>&#9654; Play &#8599;</em></a>
+      <a class="game" href="https://azgames.io/sky-dart" target="_blank" rel="noopener"><b>Sky Dart</b><em>&#9654; Play &#8599;</em></a>
+      <a class="game" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener"><b>Hyper Tunnel</b><em>&#9654; Play &#8599;</em></a>
+      <a class="game" href="https://azgames.io/flipping-master" target="_blank" rel="noopener"><b>Flipping Master</b><em>&#9654; Play &#8599;</em></a>
+      <a class="game" href="https://azgames.io/animal-craft" target="_blank" rel="noopener"><b>Animal Craft</b><em>&#9654; Play &#8599;</em></a>
+    </div>
+    <h3 class="group">Action &amp; ragdoll</h3>
+    <div class="shipped">
+      <a class="game" href="https://azgames.io/stick-hero-rpg" target="_blank" rel="noopener"><b>Stick Hero RPG</b><em>&#9654; Play &#8599;</em></a>
+      <a class="game" href="https://azgames.io/planet-buster" target="_blank" rel="noopener"><b>Planet Buster</b><em>&#9654; Play &#8599;</em></a>
+      <a class="game" href="https://azgames.io/undead-corridor" target="_blank" rel="noopener"><b>Undead Corridor</b><em>&#9654; Play &#8599;</em></a>
+    </div>
+  </section>
+
   <section id="puzzles">
     <div class="sec-head">
       <h2>Puzzle Projects</h2>
@@ -168,7 +229,8 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
         <ul>
           <li>Generator that makes every level solvable by construction.</li>
           <li>Solver that rates difficulty by "waves" of arrows that are free to move, and powers the hint system.</li>
-          <li>Ads and saving sit behind swappable interfaces; added haptics, procedural SFX and safe-area UI.</li>
+          <li>Rules in a pure C# core that talks through events; ads and saving sit behind swappable interfaces.</li>
+          <li>Added haptics, procedural SFX and safe-area UI.</li>
         </ul>
         <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">Event-driven</span><span class="chip">Hint system</span></div>
         <div class="shots">
@@ -187,10 +249,10 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
         <h3>Pixel Unpuzzle</h3>
         <p class="play"><b>Gameplay:</b> tap jigsaw pieces to send them to the matching color tray. Spare pieces wait in a 5-slot holding row, and the level fails when it fills with no valid move.</p>
         <ul>
-          <li>Game rules live in a pure C# model that emits events; Unity views only animate them.</li>
           <li>DFS solver plus a generator that outputs only solvable levels.</li>
           <li>Difficulty score from 0 to 100, used to order and plan a 100-level curve.</li>
           <li>Custom Unity Editor level editor: paint pieces, undo/redo, one-click solve and instant play-test.</li>
+          <li>Game logic covered by NUnit tests.</li>
         </ul>
         <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">NUnit</span><span class="chip">Editor tooling</span><span class="chip">DFS solver</span></div>
         <div class="shots">
@@ -222,47 +284,21 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
     </article>
   </section>
 
-  <section id="gmsoft">
-    <div class="sec-head">
-      <h2>Shipped at GM Soft</h2>
-      <p>Unity Developer · 12/2024 – Present</p>
-    </div>
-    <div class="stat"><strong>15+</strong><span>WebGL games released on the azgames.io portal, several on its Trending list. Gameplay, controls, UI, SDK and leaderboard integration, testing on browsers and Chromebooks.</span></div>
-    <div class="hl">
-      <div class="hl-head">
-        <div><div class="tag">Highlight · action</div><h3>Undead Corridor</h3></div>
-        <a class="btn primary" href="https://azgames.io/undead-corridor" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a>
-      </div>
-      <div class="hl-nums">
-        <div><strong>18,500+</strong><span>players in the top 5 countries</span></div>
-        <div><strong>73%</strong><span>of those players from the US</span></div>
-        <div><strong>160+</strong><span>websites sending players</span></div>
-      </div>
-      <div class="hl-body">
-        <figure class="shot"><img src="media/undead_users.png" alt="Analytics screenshot: Undead Corridor active users by country" loading="lazy"><figcaption>Screenshot from the studio's analytics dashboard.</figcaption></figure>
-        <div class="hl-bars">
-          <div class="eyebrow">Players by country</div>
-          <ul class="bars"><li><span class="c">United States</span><span class="bar"><i style="width:100.0%"></i></span><span class="n">13,565</span></li><li><span class="c">Canada</span><span class="bar"><i style="width:17.7%"></i></span><span class="n">2,399</span></li><li><span class="c">Brazil</span><span class="bar"><i style="width:9.0%"></i></span><span class="n">1,218</span></li><li><span class="c">Spain</span><span class="bar"><i style="width:6.3%"></i></span><span class="n">849</span></li><li><span class="c">Netherlands</span><span class="bar"><i style="width:3.7%"></i></span><span class="n">508</span></li></ul>
-        </div>
-      </div>
-    </div>
-    <div class="shipped">
-      <a class="game" href="https://azgames.io/sky-dart" target="_blank" rel="noopener"><b>Sky Dart</b><span>3D arcade</span><em>&#9654; Play on azgames.io &#8599;</em></a>
-      <a class="game" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener"><b>Hyper Tunnel</b><span>Arcade</span><em>&#9654; Play on azgames.io &#8599;</em></a>
-      <a class="game" href="https://azgames.io/planet-buster" target="_blank" rel="noopener"><b>Planet Buster</b><span>Arcade action</span><em>&#9654; Play on azgames.io &#8599;</em></a>
-      <a class="game" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener"><b>Blocky Xtreme</b><span>Driving</span><em>&#9654; Play on azgames.io &#8599;</em></a>
-    </div>
-  </section>
-
   <section id="skills">
     <div class="sec-head"><h2>Skills</h2></div>
     <ul class="skills">
       <li><b>Unity &amp; C#</b><span>2D/3D, Animator, UI, VFX</span></li>
-      <li><b>Gameplay</b><span>Vehicle and ragdoll physics, AI with state machines</span></li>
-      <li><b>Architecture</b><span>Event-driven design; Singleton, State Machine, Observer</span></li>
-      <li><b>Tools</b><span>Unity Editor tools, level generators and solvers</span></li>
+      <li><b>Gameplay</b><span>Vehicle and ragdoll physics, AI state machines, game feel</span></li>
+      <li><b>Architecture</b><span>Event-driven design</span></li>
+      <li><b>Design patterns</b><span>State Machine, Observer, Singleton</span></li>
+      <li><b>Optimization</b><span>Unity Profiler, WebGL build size, fixing stutter and lag</span></li>
+      <li><b>Tools</b><span>DOTween, Odin Inspector, Unity Editor tools, level generators</span></li>
+      <li><b>Integration</b><span>SDKs, ads, Unity Leaderboards</span></li>
       <li><b>Platforms</b><span>WebGL, Android, PC</span></li>
-      <li><b>Workflow</b><span>Git (GitHub, GitLab), Trello, ClickUp, Figma, QA checklists</span></li>
+      <li><b>Quality</b><span>QA checklists, debugging, NUnit</span></li>
+      <li><b>Workflow</b><span>Git, Trello, Figma</span></li>
+      <li><b>AI tools</b><span>Claude, Codex for coding and debugging</span></li>
+      <li><b>Languages</b><span>English: reading technical documentation</span></li>
     </ul>
   </section>
 </main>
@@ -270,7 +306,7 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
 <footer>
   <div class="wrap">
     <span>Nguyễn Đức Cường · Unity Game Developer</span>
-    <span>FPT Polytechnic College · Game Programming · 2023 – 2025</span>
+    <span>FPT Polytechnic College · Game Programming · 2023 – 2025 · GPA 3.5/4.0, graduated with Excellent Honors</span>
   </div>
 </footer>
 
