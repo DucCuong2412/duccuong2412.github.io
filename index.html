@@ -108,6 +108,7 @@ section{padding-block:56px 8px}
 .shot{margin:0}
 .shot img{display:block;width:100%;border-radius:10px;border:1px solid var(--line)}
 .shot figcaption{font-size:12px;color:var(--muted);margin-top:8px}
+.level .shot{margin-bottom:18px}
 .hl-bars .eyebrow{margin-bottom:12px}
 @media (max-width:720px){.hl-body{grid-template-columns:1fr}}
 footer{margin-top:56px;border-top:1px solid var(--line)}
@@ -219,6 +220,53 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
       <h2>Puzzle Projects</h2>
       <p>Personal projects · Unity &amp; C#</p>
     </div>
+
+    <article class="level">
+      <div class="phone"><video src="media/blockjam.mp4" poster="media/blockjam_poster.jpg" autoplay muted loop playsinline aria-label="Block Jam gameplay"></video></div>
+      <div class="info">
+        <div class="tag">3D mobile puzzle · tray matching</div>
+        <h3>Block Jam</h3>
+        <p class="play"><b>Gameplay:</b> tap a critter with a clear path to an exit and it walks off the board into a 7-slot tray. Three of the same color clear, and a full tray loses the level. Later levels add pipes that push out new critters, crates that crack open, linked pairs and keys that open locks.</p>
+        <ul>
+          <li>No imported models, sprites or audio: 9 critter species are built from procedural meshes, music and sound effects are synthesized in code, and UI icons are drawn from SDF shapes.</li>
+          <li>DFS solver with visited-state fingerprints; a test runs it on all 44 stages of the 20 levels to prove each one can be cleared.</li>
+          <li>Rules in a pure C# domain layer: every move and each of the 4 boosters is a command, undo restores snapshots, and crates, keys and pipes plug in as separate rules.</li>
+          <li>Custom Unity Editor level editor: paint tiles and pieces with brushes, check each stage with a solver-backed report, and play-test in one click.</li>
+          <li>66 NUnit tests on the game logic.</li>
+        </ul>
+        <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">Procedural meshes</span><span class="chip">Audio synthesis</span><span class="chip">Command pattern</span><span class="chip">NUnit</span><span class="chip">Editor tooling</span></div>
+        <div class="shots">
+          <img src="media/blockjam_board.jpg" alt="Block Jam level 6 with a crowded board and two pipes" loading="lazy">
+          <img src="media/blockjam_tray.jpg" alt="Block Jam level in progress with three red critters in the tray" loading="lazy">
+          <img src="media/blockjam_complete.jpg" alt="Block Jam level complete screen" loading="lazy">
+        </div>
+        <div class="links"><button class="btn primary" type="button" data-play="games/block-jam/index.html" data-title="Block Jam">&#9654; Play in browser</button></div>
+      </div>
+    </article>
+
+    <article class="level">
+      <div class="phone"><video src="media/bus.mp4" poster="media/bus_poster.jpg" autoplay muted loop playsinline aria-label="Bus Puzzle gameplay"></video></div>
+      <div class="info">
+        <div class="tag">Mobile puzzle · parking-lot escape</div>
+        <h3>Bus Puzzle</h3>
+        <p class="play"><b>Gameplay:</b> tap a bus to drive it straight out of the lot, nose first. If another bus is in the way, it crashes, backs up and costs a heart. Clear every bus to win.</p>
+        <ul>
+          <li>Generator that only builds solvable lots: each new bus needs a clear way out past the buses placed before it. A batch tool generates levels along a difficulty curve.</li>
+          <li>Validator catches bent, overlapping or deadlocked buses and rates difficulty by solution waves and average choices per move.</li>
+          <li>Custom Unity Editor level editor: draw, rotate, reverse and paint buses, shape the lot, auto-generate, validate live and play-test without saving.</li>
+          <li>Bus meshes built in code and synthesized horn, engine and crash sounds; game feel from anticipation, combo pitch, camera shake and haptics.</li>
+          <li>One-click full check: validates all 30 levels, runs the NUnit tests, then auto-plays levels in Play mode and saves screenshots.</li>
+        </ul>
+        <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">Procedural levels</span><span class="chip">Editor tooling</span><span class="chip">NUnit</span><span class="chip">Test automation</span></div>
+        <div class="shots">
+          <img src="media/bus_title.jpg" alt="Bus Puzzle title screen" loading="lazy">
+          <img src="media/bus_play.jpg" alt="Bus Puzzle level 10 with buses filling the lot" loading="lazy">
+          <img src="media/bus_cleared.jpg" alt="Bus Puzzle lot cleared screen" loading="lazy">
+        </div>
+        <figure class="shot"><img src="media/bus_editor.jpg" alt="Bus Puzzle level editor window in Unity with tools and a 6 by 6 lot" loading="lazy"><figcaption>Level editor window inside the Unity Editor.</figcaption></figure>
+        <div class="links"><button class="btn primary" type="button" data-play="games/bus-puzzle/index.html" data-title="Bus Puzzle">&#9654; Play in browser</button></div>
+      </div>
+    </article>
 
     <article class="level">
       <div class="phone"><video src="media/arrow.mp4" poster="media/arrow_poster.jpg" autoplay muted loop playsinline aria-label="Arrow Puzzle gameplay"></video></div>
