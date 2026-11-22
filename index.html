@@ -69,19 +69,22 @@ section{padding-block:56px 8px}
 .shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
 .shots.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:66%}
 .shots img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+.shots.wide img{aspect-ratio:16/9}
 .links{display:flex;flex-wrap:wrap;gap:10px}
 
 /* shipped games */
-.shipped{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.game{display:flex;flex-direction:column;gap:2px;padding:16px;transition:border-color .15s,transform .15s;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
-.game:hover{border-color:var(--accent);transform:translateY(-2px)}
-.game b{font-family:var(--f-display);font-size:17px;margin-bottom:14px}
-.group{font-size:15px;font-weight:700;color:var(--muted);margin:24px 0 10px}
+/* each game is a full-width card sized like the puzzle cards: key art on the left, two gameplay shots stacked on the right */
+.gm-grid{display:grid;gap:20px}
+.gm{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px}
+.gm-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.gm-head h3{font-size:26px;font-weight:800}
+.gm-media{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:10px;aspect-ratio:8/3;min-height:0}
+.gm-media img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--tile)}
+.gm-media img:first-child,.gm-media img:nth-child(2):last-child{grid-row:1 / span 2}
+.group{font-size:15px;font-weight:700;color:var(--muted);margin:32px 0 12px}
 .work{margin:0 0 28px;padding-left:20px;max-width:72ch}
 .work li,.hl li{margin:6px 0}
 .hl ul{margin:0 0 20px;padding-left:20px}
-.game em{font:600 13px var(--f-body);font-style:normal;align-self:flex-start;margin-top:auto;padding:6px 12px;border-radius:7px;background:var(--navy);color:var(--surface)}
-.game:hover em{background:var(--accent)}
 .stat{display:flex;gap:14px;align-items:baseline;margin-bottom:20px;flex-wrap:wrap}
 .stat strong{font-family:var(--f-display);font-size:40px;font-weight:800;color:var(--navy);line-height:1}
 
@@ -120,6 +123,14 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
   .level{grid-template-columns:1fr;padding:18px;gap:20px}
   .phone{margin:0 auto;max-width:230px}
   .shots.two{max-width:100%}
+  .gm{padding:18px}
+  .gm-head h3{font-size:22px}
+  /* phones: key art full width, gameplay shots side by side underneath */
+  .gm-media{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;aspect-ratio:auto;gap:8px}
+  .gm-media img{height:auto;aspect-ratio:16/9}
+  .gm-media img:first-child,.gm-media img:nth-child(2):last-child{grid-row:auto;grid-column:1 / -1}
+  .shots.wide{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shots.wide img:first-child{grid-column:1 / -1}
 }
 /* in-page game player: a portrait iframe in a modal dialog, full screen on phones */
 #player{padding:0;border:0;border-radius:16px;background:#11161d;color:#e7edf5;overflow:hidden;max-width:none;max-height:none}
@@ -180,6 +191,11 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
         <li>Zombie AI with different speed, toughness and aggression; ragdoll physics for hits and deaths.</li>
         <li>Weapon switching, ammo and reload system, plus an in-game shop for weapon upgrades.</li>
       </ul>
+      <div class="shots wide">
+        <img src="media/gm/undead-corridor.jpg" alt="Undead Corridor key art" loading="lazy">
+        <img src="media/gm/undead-corridor_1.jpg" alt="Undead Corridor gameplay: shooting zombies down a corridor" loading="lazy">
+        <img src="media/gm/undead-corridor_2.jpg" alt="Undead Corridor weapon shop" loading="lazy">
+      </div>
       <div class="hl-nums">
         <div><strong>18,500+</strong><span>players in the top 5 countries</span></div>
         <div><strong>73%</strong><span>of those players from the US</span></div>
@@ -193,25 +209,61 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
         </div>
       </div>
     </div>
+    <h3 class="group">Farming &amp; simulation</h3>
+    <div class="gm-grid">
+      <article class="gm">
+        <div class="gm-head"><h3>Farm Village</h3><a class="btn primary" href="https://azgames.io/farm-village" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/farm-village.jpg" alt="Farm Village main menu with barn and tractor" loading="lazy"><img src="media/gm/farm-village_1.jpg" alt="Farm Village: farm with animal pens and crop fields" loading="lazy"><img src="media/gm/farm-village_2.jpg" alt="Farm Village: early farm layout with houses and fields" loading="lazy"></div>
+      </article>
+    </div>
     <h3 class="group">Racing &amp; driving</h3>
-    <div class="shipped">
-      <a class="game" href="https://azgames.io/street-escape" target="_blank" rel="noopener"><b>Street Escape</b><em>&#9654; Play &#8599;</em></a>
-      <a class="game" href="https://azgames.io/turbo-flip" target="_blank" rel="noopener"><b>Turbo Flip</b><em>&#9654; Play &#8599;</em></a>
-      <a class="game" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener"><b>Blocky Xtreme</b><em>&#9654; Play &#8599;</em></a>
+    <div class="gm-grid">
+      <article class="gm">
+        <div class="gm-head"><h3>Street Escape</h3><a class="btn primary" href="https://azgames.io/street-escape" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/street-escape.jpg" alt="Street Escape key art" loading="lazy"><img src="media/gm/street-escape_1.jpg" alt="Street Escape: getaway car crashing into a police car" loading="lazy"><img src="media/gm/street-escape_2.jpg" alt="Street Escape: police chasing through the city" loading="lazy"></div>
+      </article>
+      <article class="gm">
+        <div class="gm-head"><h3>Turbo Flip</h3><a class="btn primary" href="https://azgames.io/turbo-flip" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/turbo-flip.jpg" alt="Turbo Flip key art" loading="lazy"><img src="media/gm/turbo-flip_1.jpg" alt="Turbo Flip: car on the start ramp with upgrade buttons" loading="lazy"></div>
+      </article>
+      <article class="gm">
+        <div class="gm-head"><h3>Blocky Xtreme</h3><a class="btn primary" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/blocky-xtreme.jpg" alt="Blocky Xtreme rider select screen" loading="lazy"><img src="media/gm/blocky-xtreme_1.jpg" alt="Blocky Xtreme: dirt bike on an offroad track" loading="lazy"><img src="media/gm/blocky-xtreme_2.jpg" alt="Blocky Xtreme level select" loading="lazy"></div>
+      </article>
     </div>
     <h3 class="group">Arcade &amp; casual</h3>
-    <div class="shipped">
-      <a class="game" href="https://azgames.io/stumble-race" target="_blank" rel="noopener"><b>Stumble Race</b><em>&#9654; Play &#8599;</em></a>
-      <a class="game" href="https://azgames.io/sky-dart" target="_blank" rel="noopener"><b>Sky Dart</b><em>&#9654; Play &#8599;</em></a>
-      <a class="game" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener"><b>Hyper Tunnel</b><em>&#9654; Play &#8599;</em></a>
-      <a class="game" href="https://azgames.io/flipping-master" target="_blank" rel="noopener"><b>Flipping Master</b><em>&#9654; Play &#8599;</em></a>
-      <a class="game" href="https://azgames.io/animal-craft" target="_blank" rel="noopener"><b>Animal Craft</b><em>&#9654; Play &#8599;</em></a>
+    <div class="gm-grid">
+      <article class="gm">
+        <div class="gm-head"><h3>Stumble Race</h3><a class="btn primary" href="https://azgames.io/stumble-race" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/stumble-race.jpg" alt="Stumble Race key art" loading="lazy"><img src="media/gm/stumble-race_1.jpg" alt="Stumble Race: crossing the finish line" loading="lazy"><img src="media/gm/stumble-race_2.jpg" alt="Stumble Race: spinning bars on the course" loading="lazy"></div>
+      </article>
+      <article class="gm">
+        <div class="gm-head"><h3>Sky Dart</h3><a class="btn primary" href="https://azgames.io/sky-dart" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/sky-dart.jpg" alt="Sky Dart key art" loading="lazy"><img src="media/gm/sky-dart_1.jpg" alt="Sky Dart: bullseye hit with coins" loading="lazy"><img src="media/gm/sky-dart_2.jpg" alt="Sky Dart: dart flying toward the target" loading="lazy"></div>
+      </article>
+      <article class="gm">
+        <div class="gm-head"><h3>Hyper Tunnel</h3><a class="btn primary" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/hyper-tunnel.jpg" alt="Hyper Tunnel key art" loading="lazy"><img src="media/gm/hyper-tunnel_1.jpg" alt="Hyper Tunnel: ship racing down the tunnel" loading="lazy"><img src="media/gm/hyper-tunnel_2.jpg" alt="Hyper Tunnel start screen" loading="lazy"></div>
+      </article>
+      <article class="gm">
+        <div class="gm-head"><h3>Flipping Master</h3><a class="btn primary" href="https://azgames.io/flipping-master" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/flipping-master.jpg" alt="Flipping Master key art" loading="lazy"><img src="media/gm/flipping-master_1.jpg" alt="Flipping Master gameplay with health bar" loading="lazy"><img src="media/gm/flipping-master_2.jpg" alt="Flipping Master character select" loading="lazy"></div>
+      </article>
+      <article class="gm">
+        <div class="gm-head"><h3>Animal Craft</h3><a class="btn primary" href="https://azgames.io/animal-craft" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/animal-craft.jpg" alt="Animal Craft key art" loading="lazy"><img src="media/gm/animal-craft_1.jpg" alt="Animal Craft gameplay" loading="lazy"><img src="media/gm/animal-craft_2.jpg" alt="Animal Craft title screen" loading="lazy"></div>
+      </article>
     </div>
     <h3 class="group">Action &amp; ragdoll</h3>
-    <div class="shipped">
-      <a class="game" href="https://azgames.io/stick-hero-rpg" target="_blank" rel="noopener"><b>Stick Hero RPG</b><em>&#9654; Play &#8599;</em></a>
-      <a class="game" href="https://azgames.io/planet-buster" target="_blank" rel="noopener"><b>Planet Buster</b><em>&#9654; Play &#8599;</em></a>
-      <a class="game" href="https://azgames.io/undead-corridor" target="_blank" rel="noopener"><b>Undead Corridor</b><em>&#9654; Play &#8599;</em></a>
+    <div class="gm-grid">
+      <article class="gm">
+        <div class="gm-head"><h3>Stick Hero RPG</h3><a class="btn primary" href="https://azgames.io/stick-hero-rpg" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/stick-hero-rpg.jpg" alt="Stick Hero RPG key art" loading="lazy"><img src="media/gm/stick-hero-rpg_1.jpg" alt="Stick Hero RPG: stickman gunner fighting slimes" loading="lazy"><img src="media/gm/stick-hero-rpg_2.jpg" alt="Stick Hero RPG class select" loading="lazy"></div>
+      </article>
+      <article class="gm">
+        <div class="gm-head"><h3>Planet Buster</h3><a class="btn primary" href="https://azgames.io/planet-buster" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-media"><img src="media/gm/planet-buster.jpg" alt="Planet Buster key art" loading="lazy"><img src="media/gm/planet-buster_1.jpg" alt="Planet Buster: missiles hitting the planet with upgrades panel" loading="lazy"><img src="media/gm/planet-buster_2.jpg" alt="Planet Buster start screen" loading="lazy"></div>
+      </article>
     </div>
   </section>
 
