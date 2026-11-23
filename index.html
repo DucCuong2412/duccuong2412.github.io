@@ -76,8 +76,10 @@ section{padding-block:56px 8px}
 /* each game is a full-width card sized like the puzzle cards: key art on the left, two gameplay shots stacked on the right */
 .gm-grid{display:grid;gap:20px}
 .gm{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px}
-.gm-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-.gm-head h3{font-size:26px;font-weight:800}
+.gm-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.gm-head h3{font-size:26px;font-weight:800;margin-top:4px}
+.gm ul{margin:0 0 20px;padding-left:20px}
+.gm li{margin:6px 0}
 .gm-media{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:10px;aspect-ratio:8/3;min-height:0}
 .gm-media img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--tile)}
 .gm-media img:first-child,.gm-media img:nth-child(2):last-child{grid-row:1 / span 2}
@@ -212,56 +214,119 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
     <h3 class="group">Farming &amp; simulation</h3>
     <div class="gm-grid">
       <article class="gm">
-        <div class="gm-head"><h3>Farm Village</h3><a class="btn primary" href="https://azgames.io/farm-village" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D farming sim · voxel</div><h3>Farm Village</h3></div><a class="btn primary" href="https://azgames.io/farm-village" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> build and grow a voxel farm: plant crops, raise animals, put up buildings and upgrade them.</p>
+        <ul>
+          <li>Built the timers for crop growth, harvesting and item cooldowns.</li>
+          <li>Built the game UI.</li>
+          <li>Added analytics event logging to collect gameplay data.</li>
+          <li>Worked with the art team on the game's 3D models.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/farm-village.jpg" alt="Farm Village main menu with barn and tractor" loading="lazy"><img src="media/gm/farm-village_1.jpg" alt="Farm Village: farm with animal pens and crop fields" loading="lazy"><img src="media/gm/farm-village_2.jpg" alt="Farm Village: early farm layout with houses and fields" loading="lazy"></div>
       </article>
     </div>
     <h3 class="group">Racing &amp; driving</h3>
     <div class="gm-grid">
       <article class="gm">
-        <div class="gm-head"><h3>Street Escape</h3><a class="btn primary" href="https://azgames.io/street-escape" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D top-down chase</div><h3>Street Escape</h3></div><a class="btn primary" href="https://azgames.io/street-escape" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> drive a getaway car through the city from a top-down view and dodge the police on your tail.</p>
+        <ul>
+          <li>Optimized the frame rate using the Unity Profiler.</li>
+          <li>Built the UI together with the 2D and 3D artists.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/street-escape.jpg" alt="Street Escape key art" loading="lazy"><img src="media/gm/street-escape_1.jpg" alt="Street Escape: getaway car crashing into a police car" loading="lazy"><img src="media/gm/street-escape_2.jpg" alt="Street Escape: police chasing through the city" loading="lazy"></div>
       </article>
       <article class="gm">
-        <div class="gm-head"><h3>Turbo Flip</h3><a class="btn primary" href="https://azgames.io/turbo-flip" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D driving · stunts</div><h3>Turbo Flip</h3></div><a class="btn primary" href="https://azgames.io/turbo-flip" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> race along a track between city blocks, flip in the air to earn coins, and upgrade speed and fuel.</p>
+        <ul>
+          <li>Programmed the gameplay and the player's movement.</li>
+          <li>Built the NPCs.</li>
+          <li>Built the game UI.</li>
+          <li>Integrated Unity Leaderboards.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/turbo-flip.jpg" alt="Turbo Flip key art" loading="lazy"><img src="media/gm/turbo-flip_1.jpg" alt="Turbo Flip: car on the start ramp with upgrade buttons" loading="lazy"></div>
       </article>
       <article class="gm">
-        <div class="gm-head"><h3>Blocky Xtreme</h3><a class="btn primary" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D motocross · voxel</div><h3>Blocky Xtreme</h3></div><a class="btn primary" href="https://azgames.io/blocky-xtreme" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> race a voxel dirt bike: pick a rider and a track (Offroad, City or Ports).</p>
+        <ul>
+          <li>Wheel physics with spring suspension for the bikes.</li>
+          <li>Worked with the 3D art team to set up the bikes.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/blocky-xtreme.jpg" alt="Blocky Xtreme rider select screen" loading="lazy"><img src="media/gm/blocky-xtreme_1.jpg" alt="Blocky Xtreme: dirt bike on an offroad track" loading="lazy"><img src="media/gm/blocky-xtreme_2.jpg" alt="Blocky Xtreme level select" loading="lazy"></div>
       </article>
     </div>
     <h3 class="group">Arcade &amp; casual</h3>
     <div class="gm-grid">
       <article class="gm">
-        <div class="gm-head"><h3>Stumble Race</h3><a class="btn primary" href="https://azgames.io/stumble-race" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D obstacle race</div><h3>Stumble Race</h3></div><a class="btn primary" href="https://azgames.io/stumble-race" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> run an obstacle course full of spinning bars and reach the finish before your rivals.</p>
+        <ul>
+          <li>Built a state machine for the characters.</li>
+          <li>Worked with the art team on character animations.</li>
+          <li>Smooth camera fade transitions.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/stumble-race.jpg" alt="Stumble Race key art" loading="lazy"><img src="media/gm/stumble-race_1.jpg" alt="Stumble Race: crossing the finish line" loading="lazy"><img src="media/gm/stumble-race_2.jpg" alt="Stumble Race: spinning bars on the course" loading="lazy"></div>
       </article>
       <article class="gm">
-        <div class="gm-head"><h3>Sky Dart</h3><a class="btn primary" href="https://azgames.io/sky-dart" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D casual · dart throwing</div><h3>Sky Dart</h3></div><a class="btn primary" href="https://azgames.io/sky-dart" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> throw darts at targets, hit the bullseye in a row to multiply your score, and upgrade your throw.</p>
+        <ul>
+          <li>Spawned targets at random positions.</li>
+          <li>Built the shop system for buying and selling.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/sky-dart.jpg" alt="Sky Dart key art" loading="lazy"><img src="media/gm/sky-dart_1.jpg" alt="Sky Dart: bullseye hit with coins" loading="lazy"><img src="media/gm/sky-dart_2.jpg" alt="Sky Dart: dart flying toward the target" loading="lazy"></div>
       </article>
       <article class="gm">
-        <div class="gm-head"><h3>Hyper Tunnel</h3><a class="btn primary" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D endless runner · neon</div><h3>Hyper Tunnel</h3></div><a class="btn primary" href="https://azgames.io/hyper-tunnel" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> steer a ship through a neon tunnel and dodge obstacles to get as far as you can.</p>
+        <ul>
+          <li>Programmed the game physics.</li>
+          <li>Built the ship controls.</li>
+          <li>Particle effects for collisions.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/hyper-tunnel.jpg" alt="Hyper Tunnel key art" loading="lazy"><img src="media/gm/hyper-tunnel_1.jpg" alt="Hyper Tunnel: ship racing down the tunnel" loading="lazy"><img src="media/gm/hyper-tunnel_2.jpg" alt="Hyper Tunnel start screen" loading="lazy"></div>
       </article>
       <article class="gm">
-        <div class="gm-head"><h3>Flipping Master</h3><a class="btn primary" href="https://azgames.io/flipping-master" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D voxel action</div><h3>Flipping Master</h3></div><a class="btn primary" href="https://azgames.io/flipping-master" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> a voxel character flips and fights its way forward, earning coins to unlock new characters.</p>
+        <ul>
+          <li>Programmed the core gameplay systems.</li>
+          <li>Generated the map ahead of the player with object pooling.</li>
+          <li>Built the game UI.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/flipping-master.jpg" alt="Flipping Master key art" loading="lazy"><img src="media/gm/flipping-master_1.jpg" alt="Flipping Master gameplay with health bar" loading="lazy"><img src="media/gm/flipping-master_2.jpg" alt="Flipping Master character select" loading="lazy"></div>
       </article>
       <article class="gm">
-        <div class="gm-head"><h3>Animal Craft</h3><a class="btn primary" href="https://azgames.io/animal-craft" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">3D survival · animal breeding</div><h3>Animal Craft</h3></div><a class="btn primary" href="https://azgames.io/animal-craft" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> crossbreed animals, then send the hybrids into a survival world where they eat items to grow and level up.</p>
+        <ul>
+          <li>Worked with the 3D artists to make character movement smooth, with good game feel.</li>
+          <li>Built the map data as a grid of 3×3 cells.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/animal-craft.jpg" alt="Animal Craft key art" loading="lazy"><img src="media/gm/animal-craft_1.jpg" alt="Animal Craft gameplay" loading="lazy"><img src="media/gm/animal-craft_2.jpg" alt="Animal Craft title screen" loading="lazy"></div>
       </article>
     </div>
     <h3 class="group">Action &amp; ragdoll</h3>
     <div class="gm-grid">
       <article class="gm">
-        <div class="gm-head"><h3>Stick Hero RPG</h3><a class="btn primary" href="https://azgames.io/stick-hero-rpg" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">2D action RPG · stickman</div><h3>Stick Hero RPG</h3></div><a class="btn primary" href="https://azgames.io/stick-hero-rpg" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> pick a class (Gunner, Wizard, Archer or Thief), fight monsters, level up and raise your stats.</p>
+        <ul>
+          <li>State machines for the player character and enemies.</li>
+          <li>Built the gun system.</li>
+          <li>Built the game UI.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/stick-hero-rpg.jpg" alt="Stick Hero RPG key art" loading="lazy"><img src="media/gm/stick-hero-rpg_1.jpg" alt="Stick Hero RPG: stickman gunner fighting slimes" loading="lazy"><img src="media/gm/stick-hero-rpg_2.jpg" alt="Stick Hero RPG class select" loading="lazy"></div>
       </article>
       <article class="gm">
-        <div class="gm-head"><h3>Planet Buster</h3><a class="btn primary" href="https://azgames.io/planet-buster" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <div class="gm-head"><div><div class="tag">2D arcade shooter</div><h3>Planet Buster</h3></div><a class="btn primary" href="https://azgames.io/planet-buster" target="_blank" rel="noopener">&#9654; Play on azgames.io &#8599;</a></div>
+        <p class="play"><b>Gameplay:</b> fire missiles to break the planet apart, and upgrade power and fire rate.</p>
+        <ul>
+          <li>Reworked the game feel.</li>
+          <li>Balanced the missiles.</li>
+        </ul>
         <div class="gm-media"><img src="media/gm/planet-buster.jpg" alt="Planet Buster key art" loading="lazy"><img src="media/gm/planet-buster_1.jpg" alt="Planet Buster: missiles hitting the planet with upgrades panel" loading="lazy"><img src="media/gm/planet-buster_2.jpg" alt="Planet Buster start screen" loading="lazy"></div>
       </article>
     </div>
@@ -287,10 +352,9 @@ footer .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;
           <li>66 NUnit tests on the game logic.</li>
         </ul>
         <div class="chips"><span class="chip">C#</span><span class="chip">Unity</span><span class="chip">Procedural meshes</span><span class="chip">Audio synthesis</span><span class="chip">Command pattern</span><span class="chip">NUnit</span><span class="chip">Editor tooling</span></div>
-        <div class="shots">
-          <img src="media/blockjam_board.jpg" alt="Block Jam level 6 with a crowded board and two pipes" loading="lazy">
-          <img src="media/blockjam_tray.jpg" alt="Block Jam level in progress with three red critters in the tray" loading="lazy">
-          <img src="media/blockjam_complete.jpg" alt="Block Jam level complete screen" loading="lazy">
+        <div class="shots two">
+          <img src="media/blockjam_board.jpg" alt="Block Jam level 5: a full board of critters with a pipe holding five more" loading="lazy">
+          <img src="media/blockjam_complete.jpg" alt="Block Jam level 6 complete screen with three stars and a coin reward" loading="lazy">
         </div>
         <div class="links"><button class="btn primary" type="button" data-play="games/block-jam/index.html" data-title="Block Jam">&#9654; Play in browser</button></div>
       </div>
